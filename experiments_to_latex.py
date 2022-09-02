@@ -18,7 +18,7 @@ hp_vca = {'algorithm': 'vca'}
 hp_svm = {'algorithm': 'svm'}
 hps_no_svm = [hp_cg_ihb, hp_agd_ihb, hp_bpcg_wihb, hp_abm, hp_vca]
 hps = hps_no_svm + [hp_svm]
-data_sets = ['bank', 'credit', 'htru', 'seeds', 'skin', 'spam']
+data_sets = ['credit', 'htru', 'skin', 'spam']
 
 
 print("############################################################################################")
