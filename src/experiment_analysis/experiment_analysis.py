@@ -1,3 +1,5 @@
+import math
+
 from src.auxiliary_functions.auxiliary_functions import translate_names
 from src.data_frames.data_frames import load_data_frame
 import pandas as pd
@@ -47,15 +49,12 @@ def get_from_key(algorithm_name, data_set_name, key: str):
     if key in ['time_train', 'time_test', 'time_hyper']:
         mean = np.format_float_scientific(mean, 1, trim="k")
         std = np.format_float_scientific(std, 1)
-
         mean = latex_float(mean)
         std = latex_float(std)
-        # mean = np.format_float_scientific(mean, 1)
-        # std = np.format_float_scientific(std, 1)
     elif key in ['error_train', 'error_test', 'total_sparsity', 'avg_degree', 'number_of_polynomials_and_terms',
                  'G + O']:
-        mean = "{:.2f}".format(mean)
-        std = "{:.2f}".format(std)
+        mean = r"${:.2f}$".format(mean)
+        std = r"${:.2f}$".format(std)
     return mean, std
 
 

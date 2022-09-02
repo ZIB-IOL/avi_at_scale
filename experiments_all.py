@@ -7,7 +7,6 @@ from src.experiment_setups.experiment_time_trials import time_trials
 from src.plotting.plotting_functions import plotter
 
 
-
 def data_driven():
     hp_pearson = {'algorithm': 'oavi', 'oracle_type': 'CG', 'psi': psis_, 'C': Cs_, 'term_ordering_strategy': 'pearson',
                   'inverse_hessian_boost': 'full'}
@@ -85,10 +84,10 @@ def time_PCG_v_BPCG():
 
 
 if __name__ == '__main__':
-    # data_driven()
+    data_driven()
     performance()
-    # termination_graphic()
-    # termination_theory_v_practice(10000, list(range(2, 25, 3)), psis_single_[0])
+    termination_graphic()
+    termination_theory_v_practice(10000, list(range(2, 25, 3)), psis_single_[0])
     time_BPCG_v_IHB_v_WIHB()
     time_comparison()
     time_PCG_v_BPCG()
