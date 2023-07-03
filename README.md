@@ -1,7 +1,9 @@
 # Approximate Vanishing Ideal Computations at Scale
 
+
+
 Code for the paper:
-[Wirth, E., Kera, H., and Pokutta, S. (2022). Approximate vanishing ideal computations at scale.](https://arxiv.org/abs/2207.01236)
+[Wirth, E.S., Kera, H. and Pokutta, S., 2022, September. Approximate Vanishing Ideal Computations at Scale. In Proceedings of the Eleventh International Conference on Learning Representations.](https://openreview.net/forum?id=3ZPESALKXO)
 
 
 ## References
