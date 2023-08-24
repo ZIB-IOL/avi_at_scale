@@ -54,6 +54,32 @@ class TestL1Ball(unittest.TestCase):
         self.assertTrue(self.feasiblityRegion.vertex_among_active_vertices(matrix, vector) == 0,
                         "Wrong index returned.")
 
+    def test_projection(self):
+        """Tests whether L1Ball.projection() behaves asa intended."""
+        region = L1Ball(3, 2)
+        for i in range(0, 10):
+            vector_to_project = 2 * (cp.random.random((3, 1)) - 1) / 2
+            scaling_factor = (i % 5)
+            vector_to_project = vector_to_project * scaling_factor
+            vector_projected = self.feasiblityRegion.projection(vector_to_project).flatten()
+
+            eps = 10 ** (-10)
+            psi = 0
+            iterations = 1000
+            A = cp.identity(3)
+            b = -vector_to_project
+            lmbda = 0.0
+            objective = L2Loss(A, b, lmbda)
+            oracle = ConditionalGradients(objective_function=objective, feasible_region=region, oracle_type="BPCG",
+                                          psi=psi,
+                                          eps=eps, max_iterations=iterations, inverse_hessian_boost="false",
+                                          compute_loss=False)
+
+            iterate, _, list_a = oracle.optimize()
+            iterate = iterate.flatten()
+            self.assertTrue(cp.linalg.norm(iterate - vector_projected) <= 1 / iterations,
+                            "The projection operation is wrong.")
+            self.assertTrue(cp.linalg.norm(iterate, ord=1) - 2 <= 10 ** (-6), "The projection operation is wrong.")
 
 class TestL2Ball(unittest.TestCase):
     def setUp(self):
